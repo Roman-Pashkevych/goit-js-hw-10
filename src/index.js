@@ -11,8 +11,12 @@ const listContainer = document.querySelector('.country-list')
 
 
     
-function showCountry() {
-    fetchCountries(searchboxInput.value.trim())
+function showCountry(event) {
+    const countryName = event.target.value.trim();
+
+    if (!countryName) return;
+
+    fetchCountries(countryName)
      .then(country => {
       infoContainer.innerHTML = '';
       listContainer.innerHTML = '';
